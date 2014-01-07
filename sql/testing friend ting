@@ -1,0 +1,30 @@
+SELECT 
+	*, 
+	(SELECT Count(`id`)
+	FROM `post_like_map`
+	WHERE `user_id` IN (1, 2)
+	AND `deleted` = '0'
+	GROUP BY `post_id`) AS `like_count`
+FROM `post`
+
+
+
+SELECT *, 
+	(SELECT COUNT(id) as `count` 
+	FROM post_like_map 
+	WHERE user_id IN (1) 
+	AND deleted = 0 ) AS 'like_count' 
+FROM `post` 
+WHERE `deleted` = '0' 
+AND `message` LIKE '%aaaa%'
+GROUP BY `id`
+
+
+
+
+
+SELECT COUNT(`post_like_map`.`id`), `post`.`id`
+FROM `post_like_map`
+LEFT JOIN `post`
+ON `post`.`id` = `post_like_map`.`post_id`
+GROUP BY `post_like_map`.`post_id`

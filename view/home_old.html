@@ -1,0 +1,86 @@
+<div class='row-fluid' ng-controller='CtrlMainPage' ng-init='init()'>
+	<div class='row-fluid'>
+		<div class='span2' >
+			<ul class='nav nav-pills nav-stacked'>
+				<li>{{user.first_name}} {{user.last_name}}</li>
+				<li><a ng-href="#">Home</a></li>
+				<li><a ng-href="#">Messages</a></li>
+				<li><a ng-href='#/' ng-click='logout()'>Log out</a></li>
+			</ul>
+		</div>
+	<div>
+	
+	<div class='row-fluid span7'>
+
+		<div>
+			<div class='form-horizontal'>
+				<div ng-show='!upload'>
+					<textarea style='resize:none' ng-model='newMessage'></textarea>
+					<a class='btn btn-success' ng-click='postMessage()'>Post</a>
+				</div>
+				<!-- Create a file upload form with options passed in from your scope -->
+				<form ng-show='upload'>
+
+				    <!-- This button will trigger a file selection dialog -->
+				    <span class='btn btn-success fileinput-button' ng-class='{disabled: disabled}'>
+				        <span>Add files...</span>
+				        <!-- Surprisingly there is a bug in angular where ng-change doesn't work on file controls so this will have to be a solution for now -->
+				        <input type='file' ng-model='file' onchange='angular.element(this).scope().uploadFile(this.files)' />
+				    </span>
+				<form>
+			</div>
+
+
+			<div class='row-fluid'>
+				<ul class='nav nav-tabs'>
+					<li ng-class='{active: !upload}'><a href='' ng-click='upload = false'>New post</a></li>
+					<li ng-class='{active: upload}'><a href='' ng-click='upload = true'>Upload image</a></li>
+				</ul>
+			</div>
+
+			<hr />
+
+			<div ng-repeat='msg in message | orderBy:msg.id:true'>
+				<div class='row-fluid well' style='padding-top:10px;overflow:auto;'>
+					<div class='row-fluid'>
+						<div class='span1'>
+							<img src='assets/img/default.jpg' class='img img-rounded' />
+						</div>
+						
+						<div class='row-fluid span7'>
+							<a ng-href='#/user/{{msg.userId}}'>{{msg.username}}</a>
+
+							<div ng-show='msg.content'>
+								<img ng-src="assets/img/upload/{{msg.content.location}}"/>
+							</div>
+
+							<blockquote> {{msg.message}} </blockquote>
+						</div>
+
+						<a ng-show='!getUserLike(msg.id)' class='btn btn-small' ng-click='likePost(msg.id)'>
+							Like
+						</a>
+
+						<a ng-show='getUserLike(msg.id)' class='btn btn-small' ng-click='unlikePost(msg.id)'>
+							Unlike
+						</a>
+
+						<a class='btn btn-small'>
+							View Post
+						</a>
+					</div>
+
+
+					<div class='row-fluid'>
+						{{msg.like.LikeCount}} like this
+					</div>
+				
+				</div>
+
+			</div>
+		</div>
+
+	</div>
+
+
+</div>

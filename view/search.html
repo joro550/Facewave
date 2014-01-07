@@ -1,0 +1,26 @@
+<div ng-controller='CtrlSearch' ng-init='search()' class='row-fluid'>
+	<div ng-show='noResultsError' class='alert alert-error'>
+		No search string was specified
+	</div>
+
+	<div class='row-fluid'>
+		<ul class='nav nav-tabs'>
+			<li ng-class='{active: !showPostResults}'><a href='' ng-click='showPostResults = false'>Users</a></li>
+			<li ng-class='{active: showPostResults}'><a href='' ng-click='showPostResults = true'>Posts</a></li>
+		</ul>
+	</div>
+
+
+	<div ng-show='!showPostResults' ng-repeat='result in user'>
+		<div class='row-fluid well' style='padding-top:20px;'>
+			<div class='span1'>
+				<img src='assets/img/default.jpg' class='img img-rounded' />
+			</div>
+			<div class='row-fluid span7'>
+				<a class='row-fluid' ng-href='#/profile/{{result.id}}'>{{result.first_name}} {{result.last_name}}</a>
+			</div>
+		</div>
+	</div>
+
+	<div ng-show='showPostResults' post></div>
+</div>

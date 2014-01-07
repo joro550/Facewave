@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>FaceWave</title>
+
+		<link rel='stylesheet' type='text/css' href='assets/css/bootstrap.css'>
+		<link rel='stylesheet' type='text/css' href='assets/css/bootstrap-responsive.css'>
+		<script type='text/javascript' src='assets/js/angular.min.js'></script>
+		<script type='text/javascript' src='assets/js/angular-route.js'></script>
+
+		<!-- Angular scripts-->
+		<script type='text/javascript' src='assets/js/script/module.js'></script>
+		<script type='text/javascript' src='assets/js/script/mainpage.js'></script>
+		<script type='text/javascript' src='assets/js/script/signup.js'></script>
+		<script type='text/javascript' src='assets/js/script/login.js'></script>
+		<script type='text/javascript' src='assets/js/script/profile.js'></script>
+		<script type='text/javascript' src='assets/js/script/friend_request.js'></script>
+		<script type='text/javascript' src='assets/js/script/search.js'></script>
+		<script type='text/javascript' src='assets/js/script/messages.js'></script>
+
+		<!-- End Angular scripts-->
+	</head>
+
+	<body ng-app='facewave'>
+
+		<div class='navbar navbar-inverse'>
+			<div class='navbar-inner'>
+				<div class='container'>
+					<button type='button' class='btn btn-navbar'>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<a ng-href='#/' class='brand'>FaceWave</a>
+					<div class='nav-collapse collapse'>
+           				<ul class='nav'>
+              				<li><a href='#/friendrequest'><i class='icon-user icon-white'></i></a></li>
+              				<li><a href='#/messages'><i class='icon-envelope icon-white'></i></a></li>
+              				<li><a href='#'><i class='icon-exclamation-sign icon-white'></i></a></li>
+              				<li class='from-inline'>
+								<div class='input-append'> 
+									<input ng-model='searchQuery' type='text' />
+									<a ng-href='#/search/{{searchQuery}}' class='btn' type='button'><i class='icon-search'></i></a>
+								</div>
+							</li>
+              				<li><a ng-href='#/profile'>Profile</a></li>
+            			</ul>
+          			</div>
+				</div>
+			</div>
+		</div>
+
+
+		<div class='container'>
+			<div ng-view></div>
+		</div>
+	</body>
+<html>

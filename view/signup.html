@@ -1,0 +1,36 @@
+<div ng-controller='CtrlSignUp'>
+  <div class='alert alert-success' ng-show='message != ""'>{{message}}</div>
+
+	<form class='form-horizontal' >
+		<div class='control-group'>
+   			<label class='control-label' >First Name</label>
+    		<div class='controls'>
+      			<input ng-model='user.firstname' type='text'>
+    		</div>
+  		</div>
+
+  		<div class='control-group'>
+   			<label class='control-label'>Last Name</label>
+    		<div class='controls'>
+      			<input ng-model='user.lastname' type='text'>
+    		</div>
+  		</div>
+
+  		<div class='control-group'>
+   			<label class='control-label'>Password</label>
+    		<div class='controls'>
+      			<input ng-model='user.password' type='password'>
+    		</div>
+  		</div>
+
+  		<div class='control-group'>
+   			<label class='control-label'>Email</label>
+    		<div class='controls'>
+      			<input ng-model='user.email' type='text'>
+    		</div>
+  		</div>
+
+      <a class='btn btn-danger' ng-href='#/'>Back</a>
+  		<a class='btn btn-success' ng-click='createUser()'>Sign up</a>
+	</form>
+</div>

@@ -1,0 +1,29 @@
+<div ng-repeat="(id, msg) in postProvider.message | toArray | orderBy:'like.LikeCount':true	">
+	<div class='row-fluid well' style='padding-top:10px;overflow:auto;'>
+		<div class='row-fluid'>
+			<div class='span1'>
+				<img src='assets/img/default.jpg' class='img img-rounded' />
+			</div>
+			<div class='row-fluid span7'>
+				<a ng-href='#/user/{{msg.userId}}'>{{msg.username}}</a>
+				<blockquote> {{msg.message}} </blockquote>
+				<div ng-show='msg.content'>
+					<img ng-src="assets/img/upload/{{msg.content.location}}"/>
+				</div>
+			</div>
+
+			<a ng-show='!postProvider.getUserLiked(msg.id)' class='btn btn-small' ng-click='postProvider.likePost(msg.id)'>
+				Like
+			</a>
+			<a ng-show='postProvider.getUserLiked(msg.id)' class='btn btn-small' ng-click='postProvider.unlikePost(msg.id)'>
+				Unlike
+			</a>
+			<a class='btn btn-small'>
+				View Post
+			</a>
+		</div>
+		<div class='row-fluid'>
+			{{msg.like.LikeCount}} like this
+		</div>
+	</div>
+</div>
